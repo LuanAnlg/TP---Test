@@ -111,6 +111,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Aliado.h" />
+    <ClInclude Include="Grupo.h" />
+    <ClInclude Include="Logica.h" />
+    <ClInclude Include="Personaje.h" />
+    <ClInclude Include="Protagonista.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
