@@ -1,29 +1,37 @@
 #pragma once
-#include "iostream"
 
-class Personaje
-{
+class Personaje {
+
 public:
+
 	Personaje();
-	~Personaje();
+
 	void setX(short nx);
 	void setY(short ny);
-	short getX();
-	short getY();
-	char getC();
-protected:
+	void setC(char nc);
+
+	short getX() const;
+	short getY() const;
+	char getC() const;
+
+private:
+
 	short x;
 	short y;
 	char c;
 };
 
 Personaje::Personaje() {
+
+	x = 0;
+	y = 0;
+	c = ' ';
 }
 
-Personaje::~Personaje() { }
+void Personaje::setX(short nx) { x = nx; }
+void Personaje::setY(short ny) { y = ny; }
+void Personaje::setC(char nc) { c = nc; }
 
-void Personaje::setX(short nx) { this->x = nx; }
-void Personaje::setY(short ny) { this->y = ny; }
-short Personaje::getX() { return this->x; }
-short Personaje::getY() { return this->y; }
-char Personaje::getC() { return this->c; }
+short Personaje::getX(void) const { return x; }
+short Personaje::getY(void) const { return y; }
+char Personaje::getC(void) const { return c; }
