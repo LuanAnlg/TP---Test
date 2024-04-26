@@ -70,7 +70,7 @@ void Grupo::agregar(char d) {
 
 void Grupo::eliminar() {
 
-	if (vecGrupo->size() > 0) {
+	if (vecGrupo->size() > 1) {
 		vecGrupo->at(aliados)->borrar();
 		vecGrupo->erase(vecGrupo->end() - 1);
 		aliados--;
