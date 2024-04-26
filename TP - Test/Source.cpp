@@ -5,6 +5,7 @@
 int main() {
 
     std::srand(time(NULL));
+    System::Console::CursorVisible = false;
 
     Logica juego;
 

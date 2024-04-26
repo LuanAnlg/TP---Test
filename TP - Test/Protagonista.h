@@ -5,25 +5,21 @@
 #include "Funciones.h"
 
 class Protagonista : public Personaje {
+	
+private:
 
 public:
 
-	Protagonista();
-	~Protagonista();
+	Protagonista() {
 
-private:
-	
-};
-
-Protagonista::Protagonista() : Personaje(){
-
-	setX1((VX - 5) / 2);
-	setY1((VY - 3) / 2);
-	setS(BLANCO,
-		"!___!",
-		"|* *|",
-		" \\+/"
+		setX1((VX - 5) / 2);
+		setY1((VY - 3) / 2);
+		setS(BLANCO,
+			"!___!",
+			"|* *|",
+			" \\+/"
 		);
-}
+	}
 
-Protagonista::~Protagonista() {}
+	~Protagonista() {}
+};

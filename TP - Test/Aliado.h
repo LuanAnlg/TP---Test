@@ -5,38 +5,34 @@
 
 class Aliado : public Personaje {
 
+private:
+	
 public:
 
-	Aliado(short nt, short nc);
-	~Aliado();
+	Aliado(short nt, short nc) {
 
-private:
-
-};
-
-Aliado::Aliado(short nt, short nc) : Personaje() {
-	
-	switch (nt) {
-	case 0:
-		setS(color(nc),
-			"///\\\\",
-			"(^v^)",
-			" \\-/"
-		); break;
-	case 1: 
-		setS(color(nc),
-			"//\\\\\\",
-			"|^v^|",
-			"//-\\\\"
-		); break;
-	case 2:
-		setS(color(nc),
-			"///#",
-			"|/v^)",
-			" |-|"
-		); break;
-	default: break;
+		switch (nt) {
+		case 0:
+			setS(color(nc),
+				"///\\\\",
+				"(^v^)",
+				" \\-/"
+			); break;
+		case 1:
+			setS(color(nc),
+				"//\\\\\\",
+				"|^v^|",
+				"//-\\\\"
+			); break;
+		case 2:
+			setS(color(nc),
+				"///#",
+				"|/v^)",
+				" |-|"
+			); break;
+		default: break;
+		}
 	}
-}
 
-Aliado::~Aliado() {}
+	~Aliado() {}
+};
