@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aliado.h" />
+    <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Funciones.h" />
     <ClInclude Include="Grupo.h" />
     <ClInclude Include="Logica.h" />

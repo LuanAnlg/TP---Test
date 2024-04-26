@@ -11,8 +11,10 @@ public:
 	Personaje();
 	~Personaje();
 
-	void setX1(short nx);
-	void setY1(short ny);
+	void setX1(short nx1);
+	void setY1(short ny1);
+	void setX2(short nx2);
+	void setY2(short ny2);
 	void setS(std::string nc, std::string nl1, std::string nl2, std::string nl3);
 
 	short getX1() const;
@@ -37,8 +39,8 @@ Personaje::Personaje() {
 
 	x1 = 0;
 	y1 = 0;
-	x2 = x1 + 4;
-	y2 = y1 + 2;
+	x2 = 4;
+	y2 = 2;
 	s.l1 = "     ";
 	s.l2 = "     ";
 	s.l3 = "     ";
@@ -46,8 +48,10 @@ Personaje::Personaje() {
 
 Personaje::~Personaje() {}
 
-void Personaje::setX1(short nx) { x1 = nx; }
-void Personaje::setY1(short ny) { y1 = ny; }
+void Personaje::setX1(short nx1) { x1 = nx1; }
+void Personaje::setY1(short ny1) { y1 = ny1; }
+void Personaje::setX2(short nx2) { x2 = nx2; }
+void Personaje::setY2(short ny2) { y2 = ny2; }
 void Personaje::setS(std::string nc, std::string nl1, std::string nl2, std::string nl3) {
 
 	s.c = nc;
@@ -69,6 +73,7 @@ void Personaje::borrar() {
 	}
 }
 void Personaje::dibujar() {
+
 	System::Console::SetCursorPosition(x1, y1); std::cout << s.c << s.l1;
 	System::Console::SetCursorPosition(x1, y1 + 1); std::cout << s.l2;
 	System::Console::SetCursorPosition(x1, y1 + 2); std::cout << s.l3 << s.r;

@@ -18,7 +18,6 @@ public:
 	void borrar();
 	void mover(short dx, short dy);
 	void dibujar();
-	
 
 private:
 
@@ -42,11 +41,9 @@ Grupo::~Grupo() {
 
 void Grupo::agregar(char d) {
 	
-	aliados++;
+	vecGrupo->push_back(new Aliado(aleatorio(0, 2), aliados % 6)); // para testeo, cambiar despues
 
-	vecGrupo->push_back(new Aliado(aleatorio(0, 2), (aliados - 1) % 5)); // para testeo, cambiar despues
-
-	if (aliados > 0) {
+	if (aliados > -1) {
 		switch (d) {
 		case 'W':
 			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
@@ -67,6 +64,7 @@ void Grupo::agregar(char d) {
 		default:
 			break;
 		}
+		aliados++;
 	}
 }
 
@@ -90,10 +88,27 @@ void Grupo::mover(short dx, short dy) {
 	for (int i = vecGrupo->size() - 1; i >= 1; i--) {
 		vecGrupo->at(i)->setX1(vecGrupo->at(i - 1)->getX1());
 		vecGrupo->at(i)->setY1(vecGrupo->at(i - 1)->getY1());
+		vecGrupo->at(i)->setX2(vecGrupo->at(i - 1)->getX1() + 4);
+		vecGrupo->at(i)->setY2(vecGrupo->at(i - 1)->getY1() + 2);
 	}
 
 	vecGrupo->at(0)->setX1(vecGrupo->at(0)->getX1() + dx);
 	vecGrupo->at(0)->setY1(vecGrupo->at(0)->getY1() + dy);
+	vecGrupo->at(0)->setX2(vecGrupo->at(0)->getX1() + 4);
+	vecGrupo->at(0)->setY2(vecGrupo->at(0)->getY1() + 2);
+
+	if (vecGrupo->at(0)->getY1() < 0) {
+		vecGrupo->at(0)->setY1(VY - 2);
+	}
+	if (vecGrupo->at(0)->getY2() > VY) {
+		vecGrupo->at(0)->setY1(2);
+	}
+	if (vecGrupo->at(0)->getX1() < 0) {
+		vecGrupo->at(0)->setX1(VX - 4);
+	}
+	if (vecGrupo->at(0)->getX2() > VX) {
+		vecGrupo->at(0)->setX1(0);
+	}
 }
 
 void Grupo::dibujar() {

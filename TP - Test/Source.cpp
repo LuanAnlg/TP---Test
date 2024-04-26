@@ -5,7 +5,10 @@
 int main() {
 
     std::srand(time(NULL));
+
     Logica juego;
+
     juego.juego();
+
     return 0;
 }
