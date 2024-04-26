@@ -16,7 +16,6 @@ private:
 
     Grupo* grupo;
     char tecla;
-    short aliados;
     int dx, dy;
 
     void entrada();
@@ -28,7 +27,6 @@ private:
 Logica::Logica() {
 
     grupo = new Grupo;
-    aliados = 0;
     dx = 0;
     dy = 0;
 }
@@ -54,21 +52,23 @@ void Logica::entrada() {
     if (_kbhit()) {
         tecla = std::toupper(_getch());
         switch (tecla) {
+        case 'Q':
+            grupo->eliminar();
+            break;
         case 'E':
-            aliados++;
-            grupo->agregar(aliados);
+            grupo->agregar(tecla);
             break;
         case 'W':
-            dx = 0; dy = -1;
+            dx = 0; dy = -3;
             break;
         case 'S':
-            dx = 0; dy = 1;
+            dx = 0; dy = 3;
             break;
         case 'A':
-            dx = -1; dy = 0;
+            dx = -5; dy = 0;
             break;
         case 'D':
-            dx = 1; dy = 0;
+            dx = 5; dy = 0;
             break;
         default:
             break;

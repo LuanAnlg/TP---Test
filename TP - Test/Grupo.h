@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <vector>
 
 #include "Personaje.h"
@@ -12,17 +11,19 @@ class Grupo {
 public:
 
 	Grupo();
-	~Grupo(void);
+	~Grupo();
 
+	void agregar(char d);
+	void eliminar();
 	void borrar();
 	void mover(short dx, short dy);
 	void dibujar();
-	void agregar(short pos);
-	Personaje* protagonista();
+	
 
 private:
 
 	std::vector<Personaje*>* vecGrupo;
+	short aliados = 0;
 };
 
 Grupo::Grupo() {
@@ -39,41 +40,65 @@ Grupo::~Grupo() {
 	delete vecGrupo;
 }
 
-void Grupo::agregar(short pos) {
+void Grupo::agregar(char d) {
+	
+	aliados++;
 
-	vecGrupo->push_back(new Aliado);
+	vecGrupo->push_back(new Aliado(aleatorio(0, 2), (aliados - 1) % 5)); // para testeo, cambiar despues
 
-	vecGrupo->at(pos)->setX(vecGrupo->at(0)->getX());
-	vecGrupo->at(pos)->setY(vecGrupo->at(0)->getY());
+	if (aliados > 0) {
+		switch (d) {
+		case 'W':
+			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
+			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1() - 3);
+			break;
+		case 'S':
+			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
+			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY2() + 1);
+			break;
+		case 'A':
+			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX2() + 1);
+			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1());
+			break;
+		case 'D':
+			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1() - 3);
+			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1());
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void Grupo::eliminar() {
+
+	if (vecGrupo->size() > 0) {
+		vecGrupo->at(aliados)->borrar();
+		vecGrupo->erase(vecGrupo->end() - 1);
+		aliados--;
+	}
 }
 
 void Grupo::borrar() {
 
 	for (int i = 0; i < vecGrupo->size(); i++) {
-		System::Console::SetCursorPosition(vecGrupo->at(i)->getX(), vecGrupo->at(i)->getY());
-		std::cout << " ";
+		vecGrupo->at(i)->borrar();
 	}
 }
 void Grupo::mover(short dx, short dy) {
 
 	for (int i = vecGrupo->size() - 1; i >= 1; i--) {
-		vecGrupo->at(i)->setX(vecGrupo->at(i - 1)->getX());
-		vecGrupo->at(i)->setY(vecGrupo->at(i - 1)->getY());
+		vecGrupo->at(i)->setX1(vecGrupo->at(i - 1)->getX1());
+		vecGrupo->at(i)->setY1(vecGrupo->at(i - 1)->getY1());
 	}
 
-	vecGrupo->at(0)->setX(vecGrupo->at(0)->getX() + dx);
-	vecGrupo->at(0)->setY(vecGrupo->at(0)->getY() + dy);
+	vecGrupo->at(0)->setX1(vecGrupo->at(0)->getX1() + dx);
+	vecGrupo->at(0)->setY1(vecGrupo->at(0)->getY1() + dy);
 }
 
 void Grupo::dibujar() {
 
 	for (int i = 0; i < vecGrupo->size(); i++) {
-		System::Console::SetCursorPosition(vecGrupo->at(i)->getX(), vecGrupo->at(i)->getY());
-		std::cout << vecGrupo->at(i)->getC();
+		vecGrupo->at(i)->dibujar();
 	}
-}
-
-Personaje* Grupo::protagonista() {
-
-	return vecGrupo->at(0);
 }

@@ -1,12 +1,14 @@
 #pragma once
 
 #include "Personaje.h"
+#include "Sprite.h"
 
 class Protagonista : public Personaje {
 
 public:
 
 	Protagonista();
+	~Protagonista();
 
 private:
 	
@@ -14,7 +16,13 @@ private:
 
 Protagonista::Protagonista() : Personaje(){
 
-	setX(10);
-	setY(10);
-	setC('@');
+	setX1(10);
+	setY1(10);
+	setS(BLANCO,
+		"!___!",
+		"|* *|",
+		" \\+/"
+		);
 }
+
+Protagonista::~Protagonista() {}
