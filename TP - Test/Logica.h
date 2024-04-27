@@ -2,7 +2,10 @@
 
 #include "Grupo.h"
 #include "Enemigo.h"
+#include "Musica.h"
+
 #include <conio.h>
+#include <Windows.h>
 
 class Logica {
 
@@ -12,6 +15,8 @@ private:
     char tecla;
     Enemigo* enemigo;
     int dx, dy;
+    Musica* musica;
+    short m;
 
     bool AABBcolision(Personaje* pro, Enemigo* ene) {
         bool estaDerecha = pro->getX1() >= ene->getX2();
@@ -55,6 +60,7 @@ private:
             enemigo->dibujar();
         }
         grupo->dibujar();
+        std::cout << m;
     }
 
 public:
@@ -63,6 +69,7 @@ public:
 
         grupo = new Grupo;
         enemigo = new Enemigo;
+        musica = new Musica;
         dx = 0;
         dy = 0;
     }
@@ -74,11 +81,11 @@ public:
 
     void juego() {
         while (true) {
+            musica->reproducir(m); // esto es el sleep
             entrada();
             limpiar();
             actualizar();
             renderizar();
-            _sleep(250);
         }
     }
 };

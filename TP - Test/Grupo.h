@@ -1,7 +1,5 @@
 #pragma once
 
-#include <vector>
-
 #include "Personaje.h"
 #include "Protagonista.h"
 #include "Aliado.h"

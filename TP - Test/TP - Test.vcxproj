@@ -119,6 +119,7 @@
     <ClInclude Include="Funciones.h" />
     <ClInclude Include="Grupo.h" />
     <ClInclude Include="Logica.h" />
+    <ClInclude Include="Musica.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Protagonista.h" />
     <ClInclude Include="Sprite.h" />

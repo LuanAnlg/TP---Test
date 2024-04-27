@@ -1,4 +1,4 @@
-#include <ctime>
+#include <iostream>
 
 #include "Logica.h"
 

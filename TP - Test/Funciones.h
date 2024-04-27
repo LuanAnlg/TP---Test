@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdlib>
+#include <vector>
+#include <windows.h>
 
 #include "Sprite.h"
 

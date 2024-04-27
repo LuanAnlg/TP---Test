@@ -44,5 +44,8 @@
     <ClInclude Include="Enemigo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Musica.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
