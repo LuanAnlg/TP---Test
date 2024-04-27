@@ -35,16 +35,10 @@
     <ClInclude Include="Logica.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Funciones.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemigo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Musica.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

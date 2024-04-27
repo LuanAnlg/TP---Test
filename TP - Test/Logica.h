@@ -2,10 +2,6 @@
 
 #include "Grupo.h"
 #include "Enemigo.h"
-#include "Musica.h"
-
-#include <conio.h>
-#include <Windows.h>
 
 class Logica {
 
@@ -15,15 +11,32 @@ private:
     char tecla;
     Enemigo* enemigo;
     int dx, dy;
-    Musica* musica;
     short m;
 
     bool AABBcolision(Personaje* pro, Enemigo* ene) {
-        bool estaDerecha = pro->getX1() >= ene->getX2();
-        bool estaIzquierda = pro->getX2() <= ene->getX1();
-        bool estaArriba = pro->getY2() <= ene->getY1();
-        bool estaAbajo = pro->getY1() >= ene->getY2();
+        bool estaDerecha = pro->getX1() > ene->getX2();
+        bool estaIzquierda = pro->getX2() < ene->getX1();
+        bool estaArriba = pro->getY2() < ene->getY1();
+        bool estaAbajo = pro->getY1() > ene->getY2();
         return !(estaDerecha || estaIzquierda || estaArriba || estaAbajo);
+    }
+
+    void reproducir(short& m) {
+        static std::vector<std::vector<double>> acordes = {
+            {261.63, 329.63, 392.00},   // C
+            {220.00, 261.63, 329.63},   // Am
+            {349.23, 440.00, 523.25},   // F
+            {392.00, 493.88, 587.33}    // G
+        };
+
+        if (m < 0 || m >= 23) {
+            m = 0;
+        }
+        else { m++; }
+
+        int a = m / 6;
+        int n = m % 6;
+        Beep(acordes[a][n % 3], 250);
     }
 
     void entrada() {
@@ -47,20 +60,20 @@ private:
 
     void actualizar() {
 
-        grupo->mover(dx, dy);
-
         if (AABBcolision(grupo->getProtagonista(), enemigo)) {
             enemigo->borrar();
-            grupo->agregar(tecla, enemigo->getTipo());
+            grupo->agregar(enemigo->getTipo());
             enemigo->reposicionar();
+            System::Console::SetCursorPosition(0, 0); std::cout << enemigo->getTipo();
         }
+        grupo->mover(dx, dy);
     }
     void renderizar() {
+        
+        grupo->dibujar();
         if (!AABBcolision(grupo->getProtagonista(), enemigo)) {
             enemigo->dibujar();
         }
-        grupo->dibujar();
-        std::cout << m;
     }
 
 public:
@@ -69,7 +82,6 @@ public:
 
         grupo = new Grupo;
         enemigo = new Enemigo;
-        musica = new Musica;
         dx = 0;
         dy = 0;
     }
@@ -80,12 +92,13 @@ public:
     }
 
     void juego() {
+
         while (true) {
-            musica->reproducir(m); // esto es el sleep
             entrada();
             limpiar();
             actualizar();
             renderizar();
+            reproducir(m); // esto es el sleep
         }
     }
 };

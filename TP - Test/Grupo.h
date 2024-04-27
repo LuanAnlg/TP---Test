@@ -21,32 +21,14 @@ public:
 
 	~Grupo() {}
 
-	void agregar(char d, short t) {
+	void agregar(short t) {
 
 		vecGrupo->push_back(new Aliado(t, aliados % 6));
 
 		aliados++;
 
-		switch (d) {
-		case 'W':
-			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
-			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1() - 3);
-			break;
-		case 'S':
-			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
-			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY2() + 1);
-			break;
-		case 'A':
-			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX2() + 1);
-			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1());
-			break;
-		case 'D':
-			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1() - 3);
-			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1());
-			break;
-		default:
-			break;
-		}
+		vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
+		vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1());
 	}
 
 	void eliminar() {
@@ -83,7 +65,7 @@ public:
 			vecGrupo->at(0)->setY1(VY - 2);
 		}
 		if (vecGrupo->at(0)->getY2() > VY) {
-			vecGrupo->at(0)->setY1(2);
+			vecGrupo->at(0)->setY1(0);
 		}
 		if (vecGrupo->at(0)->getX1() < 0) {
 			vecGrupo->at(0)->setX1(VX - 4);

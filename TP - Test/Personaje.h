@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "Sprite.h"
+#include "Funciones.h"
 
 class Personaje {
 
