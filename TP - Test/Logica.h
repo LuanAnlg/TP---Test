@@ -87,6 +87,7 @@ public:
         enemigo = new Enemigo;
         dx = 0;
         dy = 0;
+        m = 0;
     }
 
     ~Logica() {

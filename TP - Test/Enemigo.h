@@ -54,5 +54,5 @@ public:
 		setEnemigo();
 	}
 
-	short getTipo() { return tipo; }
+	short getTipo() const { return tipo; }
 };

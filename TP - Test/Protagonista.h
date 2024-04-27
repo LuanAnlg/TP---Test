@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Personaje.h"
-#include "Sprite.h"
 #include "Funciones.h"
 
 class Protagonista : public Personaje {

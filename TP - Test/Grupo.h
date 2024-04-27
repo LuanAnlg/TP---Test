@@ -27,8 +27,10 @@ public:
 
 		aliados++;
 
-		vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
-		vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1());
+		if (aliados > 0) {
+			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
+			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1());
+		}
 	}
 
 	void eliminar() {
@@ -52,8 +54,6 @@ public:
 		for (int i = vecGrupo->size() - 1; i >= 1; i--) {
 			vecGrupo->at(i)->setX1(vecGrupo->at(i - 1)->getX1());
 			vecGrupo->at(i)->setY1(vecGrupo->at(i - 1)->getY1());
-			vecGrupo->at(i)->setX2(vecGrupo->at(i - 1)->getX1() + 4);
-			vecGrupo->at(i)->setY2(vecGrupo->at(i - 1)->getY1() + 2);
 		}
 
 		vecGrupo->at(0)->setX1(vecGrupo->at(0)->getX1() + dx);
@@ -82,7 +82,7 @@ public:
 		}
 	}
 
-	Personaje* getProtagonista() {
+	Personaje* getProtagonista() const {
 		return vecGrupo->at(0);
 	}
 };

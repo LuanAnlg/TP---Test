@@ -29,9 +29,9 @@ short aleatorio(short min, short max) {
 struct sprite {
 
 	std::string c = BLANCO;
-	std::string l1;
-	std::string l2;
-	std::string l3;
+	std::string l1 = "     ";
+	std::string l2 = "     ";
+	std::string l3 = "     ";
 	std::string r = REINICIO;
 };
 

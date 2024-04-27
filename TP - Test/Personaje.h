@@ -22,10 +22,8 @@ public:
 		y1 = 0;
 		x2 = 4;
 		y2 = 2;
-		s.l1 = "     ";
-		s.l2 = "     ";
-		s.l3 = "     ";
 	}
+
 	~Personaje() {}
 
 	void setX1(short nx1) { x1 = nx1; }
