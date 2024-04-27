@@ -14,6 +14,7 @@ private:
     short m;
 
     bool AABBcolision(Personaje* pro, Enemigo* ene) {
+
         bool estaDerecha = pro->getX1() > ene->getX2();
         bool estaIzquierda = pro->getX2() < ene->getX1();
         bool estaArriba = pro->getY2() < ene->getY1();
@@ -22,14 +23,15 @@ private:
     }
 
     void reproducir(short& m) {
-        static std::vector<std::vector<double>> acordes = {
+
+        std::vector<std::vector<double>> acordes = {
             {261.63, 329.63, 392.00},   // C
             {220.00, 261.63, 329.63},   // Am
             {349.23, 440.00, 523.25},   // F
             {392.00, 493.88, 587.33}    // G
         };
 
-        if (m < 0 || m >= 23) {
+        if (m >= 23) {
             m = 0;
         }
         else { m++; }
@@ -55,6 +57,7 @@ private:
     }
 
     void limpiar() {
+
         grupo->borrar();
     }
 
