@@ -26,7 +26,7 @@ short aleatorio(short min, short max) {
 	return min + std::rand() % (max - min + 1);
 }
 
-struct Sprite {
+struct sprite {
 
 	std::string c = BLANCO;
 	std::string l1;

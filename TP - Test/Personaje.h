@@ -12,7 +12,7 @@ private:
 	short y1;
 	short x2;
 	short y2;
-	Sprite s;
+	sprite s;
 
 public:
 
@@ -52,7 +52,7 @@ public:
 
 	short getY2() const { return y2; }
 
-	Sprite getS() const { return s; }
+	sprite getS() const { return s; }
 
 	void borrar() {
 
