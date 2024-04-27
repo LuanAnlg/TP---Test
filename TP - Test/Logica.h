@@ -38,6 +38,7 @@ private:
 
         int a = m / 6;
         int n = m % 6;
+
         Beep(acordes[a][n % 3], 250);
     }
 
@@ -67,13 +68,14 @@ private:
             enemigo->borrar();
             grupo->agregar(enemigo->getTipo());
             enemigo->reposicionar();
-            System::Console::SetCursorPosition(0, 0); std::cout << enemigo->getTipo();
         }
+
         grupo->mover(dx, dy);
     }
     void renderizar() {
         
         grupo->dibujar();
+
         if (!AABBcolision(grupo->getProtagonista(), enemigo)) {
             enemigo->dibujar();
         }
@@ -93,6 +95,7 @@ public:
     ~Logica() {
 
         delete grupo;
+        delete enemigo;
     }
 
     void juego() {

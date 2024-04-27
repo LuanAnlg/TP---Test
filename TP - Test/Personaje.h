@@ -27,13 +27,9 @@ public:
 	~Personaje() {}
 
 	void setX1(short nx1) { x1 = nx1; }
-
 	void setY1(short ny1) { y1 = ny1; }
-
 	void setX2(short nx2) { x2 = nx2; }
-
 	void setY2(short ny2) { y2 = ny2; }
-
 	void setS(std::string nc, std::string nl1, std::string nl2, std::string nl3) {
 
 		s.c = nc;
@@ -43,13 +39,9 @@ public:
 	}
 
 	short getX1() const { return x1; }
-
 	short getY1() const { return y1; }
-
 	short getX2() const { return x2; }
-
 	short getY2() const { return y2; }
-
 	sprite getS() const { return s; }
 
 	void borrar() {
