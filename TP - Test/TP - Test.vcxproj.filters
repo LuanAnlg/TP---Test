@@ -41,5 +41,8 @@
     <ClInclude Include="Enemigo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Pregunta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
