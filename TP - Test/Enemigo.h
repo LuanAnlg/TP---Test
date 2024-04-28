@@ -47,7 +47,7 @@ public:
 		setEnemigo();
 	}
 
-	~Enemigo() {}
+	~Enemigo() { std::cout << "todo good1"; }
 
 	void reposicionar() {
 

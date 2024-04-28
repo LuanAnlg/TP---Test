@@ -2,6 +2,7 @@
 
 #include "Grupo.h"
 #include "Enemigo.h"
+#include "Trivia.h"
 
 class Logica {
 
@@ -12,6 +13,9 @@ private:
     Enemigo* enemigo;
     int dx, dy;
     short m;
+    Trivia* trivia;
+    short tr;
+    bool c;
 
     bool AABBcolision(Personaje* pro, Enemigo* ene) {
 
@@ -64,10 +68,32 @@ private:
 
     void actualizar() {
 
+        if (trivia->getPreguntas() == 0) {
+            c = false;
+        }
+
         if (AABBcolision(grupo->getProtagonista(), enemigo)) {
             enemigo->borrar();
-            grupo->agregar(enemigo->getTipo());
-            enemigo->reposicionar();
+            tr = trivia->preguntar();
+            switch (tr) {
+            case 0:
+                grupo->agregar(enemigo->getTipo());
+                enemigo->reposicionar();
+                break;
+            case 1:
+                if (grupo->getAliados() == 0) {
+                    c = false;
+                }
+                else {
+                    grupo->eliminar();
+                    enemigo->reposicionar();
+                }
+                break;
+            case 2:
+            case -1:
+                c = false;
+                break;
+            }
         }
 
         grupo->mover(dx, dy);
@@ -90,12 +116,16 @@ public:
         dx = 0;
         dy = 0;
         m = 0;
+        trivia = new Trivia;
+        tr = -2;
+        c = true;
     }
 
     ~Logica() {
 
-        delete grupo;
         delete enemigo;
+        delete trivia;
+        delete grupo;
     }
 
     void juego() {
@@ -104,6 +134,7 @@ public:
             entrada();
             limpiar();
             actualizar();
+            if (!c) { system("cls");  break; }
             renderizar();
             reproducir(m); // esto es el sleep
         }

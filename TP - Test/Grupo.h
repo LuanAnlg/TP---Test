@@ -19,17 +19,22 @@ public:
 		vecGrupo->push_back(new Protagonista);
 	}
 
-	~Grupo() {}
+	~Grupo() {
+
+		for (int i = 0; i < vecGrupo->size(); ++i) {
+			delete vecGrupo->at(i);
+		}
+		vecGrupo->clear();
+		delete vecGrupo;
+	}
 
 	void agregar(short t) {
 
-		vecGrupo->push_back(new Aliado(t, aliados % 6));
-
-		aliados++;
-
-		if (aliados > 0) {
-			vecGrupo->at(aliados)->setX1(vecGrupo->at(aliados - 1)->getX1());
-			vecGrupo->at(aliados)->setY1(vecGrupo->at(aliados - 1)->getY1());
+		if (aliados > -1) {
+			vecGrupo->push_back(new Aliado(t, aliados % 6));
+			vecGrupo->at(aliados + 1)->setX1(vecGrupo->at(aliados)->getX1());
+			vecGrupo->at(aliados + 1)->setY1(vecGrupo->at(aliados)->getY1());
+			aliados++;
 		}
 	}
 
@@ -84,5 +89,9 @@ public:
 
 	Personaje* getProtagonista() const {
 		return vecGrupo->at(0);
+	}
+
+	short getAliados() const{
+		return aliados;
 	}
 };

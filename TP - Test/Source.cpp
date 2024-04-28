@@ -1,6 +1,8 @@
 #include <iostream>
 
 #include "Logica.h"
+#include  "Trivia.h"
+
 
 int main() {
 
@@ -10,6 +12,10 @@ int main() {
     Logica juego;
 
     juego.juego();
+    
+    system("pause>0");
+
+    std::cout << "Fin";
 
     return 0;
 }
