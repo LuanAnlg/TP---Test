@@ -128,7 +128,7 @@ public:
         delete grupo;
     }
 
-    void juego() {
+    int juego() {
 
         while (true) {
             entrada();
@@ -138,5 +138,7 @@ public:
             renderizar();
             reproducir(m); // esto es el sleep
         }
+
+        return grupo->getAliados() * 100;
     }
 };

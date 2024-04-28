@@ -7,7 +7,7 @@ class Trivia {
 
 private:
 
-	int it;
+	short it;
 	char tecla;
 	std::vector<Pregunta*>* vecPreguntas;
 
