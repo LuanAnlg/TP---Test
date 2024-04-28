@@ -14,8 +14,8 @@ private:
     int dx, dy;
     short m;
     Trivia* trivia;
-    short tr;
-    bool c;
+    short tr; // trivia resultado
+    bool c; // continuar?
 
     bool AABBcolision(Personaje* pro, Enemigo* ene) {
 
@@ -51,7 +51,6 @@ private:
         if (_kbhit()) {
             tecla = std::toupper(_getch());
             switch (tecla) {
-            case 'Q': grupo->eliminar(); break;
             case 'W': dx = 0; dy = -3;   break;
             case 'S': dx = 0; dy = 3;    break;
             case 'A': dx = -5; dy = 0;   break;
@@ -100,6 +99,8 @@ private:
     }
     void renderizar() {
         
+        System::Console::SetCursorPosition(1, 1); std::cout << "PUNTAJE: " << grupo->getAliados() * 100;
+
         grupo->dibujar();
 
         if (!AABBcolision(grupo->getProtagonista(), enemigo)) {
@@ -109,14 +110,14 @@ private:
 
 public:
 
-    Logica() {
+    Logica(short p) {
 
         grupo = new Grupo;
         enemigo = new Enemigo;
         dx = 0;
         dy = 0;
         m = 0;
-        trivia = new Trivia;
+        trivia = new Trivia(p);
         tr = -2;
         c = true;
     }
@@ -138,7 +139,6 @@ public:
             renderizar();
             reproducir(m); // esto es el sleep
         }
-
         return grupo->getAliados() * 100;
     }
 };

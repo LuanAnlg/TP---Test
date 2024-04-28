@@ -12,15 +12,15 @@ private:
 	std::vector<Pregunta*>* vecPreguntas;
 
 public:
-	Trivia() {
+	Trivia(short c) {
 
 		vecPreguntas = new std::vector<Pregunta*>;
 
-		for (int p = 0; p < 7; p++) { // cambiar el 7 despues
-			vecPreguntas->push_back(new Pregunta(p + 1));
+		for (int p = 0; p < 30; p++) { // cambiar el 7 despues
+			vecPreguntas->push_back(new Pregunta(p));
 		}
 
-		it = 6; //cambiar despus es el la ultima pregunta menos 1
+		it = c;
 	}
 
     ~Trivia() {
@@ -33,12 +33,14 @@ public:
     }
 
     short preguntar() {
+
+        it--;
         short r = -1;
 
         if (it >= 0) { // prototipo
-            short ip = aleatorio(0, it);
+            short ip = aleatorio(0, 29);
 
-            for (int t = 30; t > 0; t--) {
+            for (int t = 60; t > 0; t--) {
                 vecPreguntas->at(ip)->imprimirPregunta();
                 Beep(1000, 100);
 
@@ -65,12 +67,10 @@ public:
             system("pause>0");
             system("cls");
             vecPreguntas->erase(vecPreguntas->begin() + ip);
-            it--;
         }
-
         return r;
     }
 
-    short getPreguntas() { return vecPreguntas->size(); }
+    short getPreguntas() const { return it; }
 
 };

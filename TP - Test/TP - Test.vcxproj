@@ -118,6 +118,7 @@
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Funciones.h" />
     <ClInclude Include="Grupo.h" />
+    <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Logica.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Pregunta.h" />
