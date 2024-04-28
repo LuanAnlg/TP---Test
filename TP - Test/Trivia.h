@@ -24,12 +24,12 @@ public:
 	}
 
     ~Trivia() {
+
         for (int i = 0; i < vecPreguntas->size(); ++i) {
             delete vecPreguntas->at(i);
         }
+        vecPreguntas->clear();
         delete vecPreguntas;
-
-        std::cout << "todo good2";
     }
 
     short preguntar() {
@@ -47,11 +47,10 @@ public:
                     if (tecla == vecPreguntas->at(ip)->getRespuesta()) {
                         r = 0;
                         break;
-                    }
-                    else if (tecla == 'R') {
+                    } else if (tecla == 'R') {
                         r = 1;
                         break;
-                    }
+                    } else { break; }
                 }
 
                 Sleep(900);

@@ -87,11 +87,7 @@ public:
 		}
 	}
 
-	Personaje* getProtagonista() const {
-		return vecGrupo->at(0);
-	}
+	Personaje* getProtagonista() const { return vecGrupo->at(0); }
 
-	short getAliados() const{
-		return aliados;
-	}
+	short getAliados() const{ return aliados; }
 };

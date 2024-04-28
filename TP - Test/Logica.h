@@ -51,12 +51,12 @@ private:
         if (_kbhit()) {
             tecla = std::toupper(_getch());
             switch (tecla) {
-            case 'Q': grupo->eliminar();                          break;
-            case 'W': dx = 0; dy = -3;                            break;
-            case 'S': dx = 0; dy = 3;                             break;
-            case 'A': dx = -5; dy = 0;                            break;
-            case 'D': dx = 5; dy = 0;                             break;
-            default:                                              break;
+            case 'Q': grupo->eliminar(); break;
+            case 'W': dx = 0; dy = -3;   break;
+            case 'S': dx = 0; dy = 3;    break;
+            case 'A': dx = -5; dy = 0;   break;
+            case 'D': dx = 5; dy = 0;    break;
+            default:                     break;
             }
         }
     }

@@ -8,7 +8,6 @@ class Pregunta {
 
 private:
 
-	short p;
 	char r;
 	std::vector<std::string> ip;
 	std::vector<std::string> ir;
@@ -16,7 +15,6 @@ private:
 public:
 
 	char getRespuesta() const { return r; }
-	short getPregunta() const { return p; }
 
 	Pregunta(short n) {
 
@@ -39,7 +37,6 @@ public:
 		switch (n) {
 
 		case 1:
-			p = 1;
 			r = 'Q';
 
 			ip[1] = "Cual es el significado actual del termino \"queer\"?";
@@ -63,7 +60,6 @@ public:
 			break;
 
 		case 2:
-			p = 2;
 			r = 'Q';
 
 			ip[1] = "Cual es la diferencia entre sexo y genero?";
@@ -89,7 +85,6 @@ public:
 			break;
 
 		case 3:
-			p = 3;
 			r = 'W';
 
 			ip[1] = "Cual es el principal significado del termino \"cisgenero\"?";
@@ -113,7 +108,6 @@ public:
 			break;
 
 		case 4:
-			p = 4;
 			r = 'Q';
 
 			ip[1] = "Cual de las siguientes opciones define mejor la \"cisnormatividad\"?";
@@ -136,7 +130,6 @@ public:
 			break;
 
 		case 5:
-			p = 5;
 			r = 'W';
 
 			ip[1] = "Cual es la relacion entre la misoginia y la transfobia?";
@@ -165,7 +158,6 @@ public:
 			break;
 
 		case 6:
-			p = 6;
 			r = 'E';
 
 			ip[1] = "Cual de las siguientes actividades esta principalmente relacionada con";
@@ -187,7 +179,6 @@ public:
 			break;
 
 		case 7:
-			p = 7;
 			r = 'W';
 
 			ip[1] = "Cual de las siguientes actividades esta principalmente relacionada";
